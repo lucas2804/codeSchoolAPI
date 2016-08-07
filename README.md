@@ -25,7 +25,7 @@ File
 
 ###### Custom Data Response in crawler._serializer.rb
 
-You can embed ids, or relations for response ([@active_model_serializers](https://github.com/rails-api/active_model_serializers))
+You can embed ids, or relations for response -> visit ([@active_model_serializers](https://github.com/rails-api/active_model_serializers)) for more information
 
 ```ruby
 class CrawlerSerializer < ActiveModel::Serializer
