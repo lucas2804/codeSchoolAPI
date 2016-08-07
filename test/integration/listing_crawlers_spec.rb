@@ -11,11 +11,9 @@ RSpec.describe "ListingCrawlers", type: :request do
   describe "GET" do
     it "all crawlers" do
       get crawlers_path
-
       expect(response).to be_success
       assert_equal Mime::JSON, response.content_type
       assert_equal Crawler.count, JSON.parse(response.body).size
     end
-
   end
 end

@@ -1,18 +1,28 @@
 require 'test_helper'
 
 class CreatingCrawlersTest < ActionDispatch::IntegrationTest
-  test 'creates new crawler with valid data' do
-    post '/api/crawlers',
-         {crawler: {url: "http://google.com", h1_content: "H1 in google.com"}}.to_json,
+  test 'crawl data with valid URL' do
+    post '/api/crawl_data',
+         {crawler: {url: "http://www.sandimetz.com/"}}.to_json,
          {Accept: 'application/json', 'Content-Type' => 'application/json'}
 
     assert_equal 201, response.status
     crawler = JSON.parse(response.body, symbolize_names: true)
-    assert_equal api_crawler_url(crawler[:id]), response.location
-    assert_equal "http://google.com", crawler[:url]
+    assert_equal "http://www.sandimetz.com/", crawler[:url]
+    assert_match "Hi, I'm Sandi. I'm a programmer.", crawler[:h1_content]
   end
 
-  test 'does not creates crawler with INVALID data' do
+  test 'crawl data with INVALID URL' do
+    post '/api/crawl_data',
+         {crawler: {url: "http://www.WRONGsandimetz.com/"}}.to_json,
+         {Accept: 'application/json', 'Content-Type' => 'application/json'}
+
+    assert_equal 404, response.status
+    error = JSON.parse(response.body, symbolize_names: true)
+    assert_equal error[:error_message], "Can not Open File/URL"
+  end
+
+  test 'does not create crawler with INVALID URL' do
     post '/api/crawlers',
          {crawler: {url: "", h1_content: "H1 in google.com"}}.to_json,
          {Accept: 'application/json', 'Content-Type' => 'application/json'}

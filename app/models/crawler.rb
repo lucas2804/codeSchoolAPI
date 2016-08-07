@@ -2,18 +2,13 @@ class Crawler < ActiveRecord::Base
 
   validates :url, presence: true
 
-  def craw_data
-
+  def crawl_data
+    data = Nokogiri::HTML(open(url))
+    self.h1_content = data.css('h1').text
+    self.h2_content = data.css('h2').text
+    self.h3_content = data.css('h3').text
+    self.link_content = data.css('a').map { |link| link['href'] }
   end
 
-  private
-  def open_link
-    begin
-      open(url)
-    rescue OpenURI::HTTPError => error
-      response = error.io
-      response = status
-      Net::HTTP
-    end
-  end
+
 end

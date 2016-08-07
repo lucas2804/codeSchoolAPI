@@ -1,6 +1,21 @@
 module Api
   class CrawlersController < ApplicationController
     before_action :set_crawler, only: [:show, :edit, :update, :destroy]
+    skip_before_filter :verify_authenticity_token
+    # POST /crawl_data
+    def crawl_data
+      @crawler = Crawler.new(crawler_params)
+      begin
+        @crawler.crawl_data
+        if @crawler.save
+          render json: @crawler, status: :created, location: [:api, @crawler]
+        else
+          render json: @crawler.errors, status: :unprocessable_entity
+        end
+      rescue Exception => error
+        render json: {error_message: "Can not Open File/URL"}, status: :not_found, location: [:api, @crawler]
+      end
+    end
 
     # GET /crawlers
     # GET /crawlers.json
@@ -28,7 +43,7 @@ module Api
     def create
       @crawler = Crawler.new(crawler_params)
       if @crawler.save
-        render json: @crawler, status: 201, location: [:api,@crawler]
+        render json: @crawler, status: 201, location: [:api, @crawler]
       else
         render json: @crawler.errors, status: 422
       end
