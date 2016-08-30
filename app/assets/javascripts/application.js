@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require admin-lte
+
 //= require_tree .
