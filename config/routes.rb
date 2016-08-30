@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  resources :tests
   namespace :admin do
-  get 'application/index'
+    resources :tests
   end
-
   get 'home/index'
 
   devise_for :users
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "application#index"
+    resources :tests
     resources :users
   end
 

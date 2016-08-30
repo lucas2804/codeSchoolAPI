@@ -15,3 +15,8 @@ unless User.exists?(email: "super_teacher@gmail.com")
   User.create!(admin: true, email: "super_teacher@gmail.com", username: "super_teacher", password: "1234qwer", password_confirmation: "1234qwer",)
   User.create!(email: "student@gmail.com", username: "normal_teacher", password: "1234qwer", password_confirmation: "1234qwer",)
 end
+
+unless ::Test.exists?(name: "What's your name?")
+  ::Test.create!(name: "What's your name?", description: "Name of people");
+  ::Test.create!(name: "What's your company name?", description: "Name of your company");
+end

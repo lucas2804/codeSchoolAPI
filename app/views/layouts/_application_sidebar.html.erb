@@ -25,14 +25,10 @@
     <%= nav_link root_path do %>
       <i class="fa fa-dashboard"></i> <span>Dashboard</span>
     <% end %>
-    <%= treeview_link 'Lots of links here' do %>
-      <%= nav_link "#" do %>
+    <%= treeview_link 'Time To Learn Project' do %>
+      <%= nav_link admin_tests_url do %>
         <i class="fa fa-angle-double-right"></i>
-        One Way
-      <% end %>
-      <%= nav_link "#" do %>
-        <i class="fa fa-angle-double-right"></i>
-        Another
+        Tests
       <% end %>
     <% end %>
   </ul>
