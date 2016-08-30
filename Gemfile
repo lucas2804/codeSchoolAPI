@@ -1,4 +1,15 @@
 source 'https://rubygems.org'
+
+
+gem 'devise'
+gem 'devise-bootstrap-views'
+gem 'quiet_assets'
+gem 'bootstrap-sass'
+gem 'adminlte-generators'
+gem 'adminlte-rails'
+gem 'simple_form'
+gem 'icheck-rails'
+
 gem 'sprockets', '3.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -41,6 +52,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'active_model_serializers'
+  gem 'awesome_print'
 end
 
 group :development do

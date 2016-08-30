@@ -9,7 +9,7 @@ class CreatingCrawlersTest < ActionDispatch::IntegrationTest
     assert_equal 201, response.status
     crawler = JSON.parse(response.body, symbolize_names: true)
     assert_equal "http://www.sandimetz.com/", crawler[:url]
-    assert_match "Hi, I'm Sandi. I'm a programmer.", crawler[:h1_content]
+    assert_match "Sandi Metz", crawler[:h1_content]
   end
 
   test 'crawl data with INVALID URL' do

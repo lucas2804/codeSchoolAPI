@@ -1,8 +1,24 @@
 Rails.application.routes.draw do
+  namespace :admin do
+  get 'application/index'
+  end
+
+  get 'home/index'
+
+  devise_for :users
+  root to: "home#index"
+
   namespace :api do
     resources :crawlers
     post "crawl_data", as: :crawl_data, to: "crawlers#crawl_data"
   end
+
+  namespace :admin do
+    root to: "application#index"
+    resources :users
+  end
+
+
 end
 
 # Routes
