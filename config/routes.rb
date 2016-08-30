@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  resources :tests
-  namespace :admin do
-    resources :tests
-  end
   get 'home/index'
 
   devise_for :users
