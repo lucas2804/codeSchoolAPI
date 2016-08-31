@@ -14,8 +14,6 @@ Rails.application.routes.draw do
     resources :tests
     resources :users
   end
-
-
 end
 
 # Routes

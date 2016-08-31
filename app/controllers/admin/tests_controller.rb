@@ -19,6 +19,7 @@ class Admin::TestsController < Admin::ApplicationController
 
   # GET /admin/tests/1/edit
   def edit
+    @admin_test.build_question if @admin_test.questions.nil?
   end
 
   # POST /admin/tests
@@ -62,13 +63,16 @@ class Admin::TestsController < Admin::ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin_test
-      @admin_test = ::Test.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_admin_test
+    @admin_test = ::Test.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def admin_test_params
-      params.require(:test).permit(:name, :description, :id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def admin_test_params
+    params.require(:test).permit(:name, :description, :id,
+                                 questions_attributes: [:name, :description, :id,
+                                                        answers_attributes: [:id, :name, :is_correct_answer]]
+    )
+  end
 end

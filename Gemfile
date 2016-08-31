@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem "nested_form"
 gem 'quiet_assets'
 gem 'bootstrap-sass'
 gem 'adminlte-generators'

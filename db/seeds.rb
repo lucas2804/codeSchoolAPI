@@ -16,7 +16,25 @@ unless User.exists?(email: "super_teacher@gmail.com")
   User.create!(email: "student@gmail.com", username: "normal_teacher", password: "1234qwer", password_confirmation: "1234qwer",)
 end
 
-unless ::Test.exists?(name: "What's your name?")
-  ::Test.create!(name: "What's your name?", description: "Name of people");
-  ::Test.create!(name: "What's your company name?", description: "Name of your company");
+unless ::Test.exists?(name: "Ruby")
+  ::Test.create!(name: "Ruby", description: "Foundation in Ruby")
+  ::Test.create!(name: "Javascript", description: "OOP in Javascript")
 end
+
+unless ::Question.exists?(name: "Ruby's greate?")
+  ruby = ::Test.where(name: "Ruby").first
+  js = ::Test.where(name: "Javascript").first
+  ::Question.create!(name: "Ruby's greate?", test_id: ruby.id)
+  ::Question.create!(name: "Ruby's dynamic?", test_id: ruby.id)
+  ::Question.create!(name: "Closure?", test_id: js.id)
+  ::Question.create!(name: "ES6?", test_id: js.id)
+end
+
+unless ::Answer.exists?(name: "Ruby's greate?")
+  ruby_greate = ::Question.where(name: "Ruby's greate?").first
+  ruby_dynamic = ::Question.where(name: "Ruby's dynamic?").first
+  ::Answer.create!(name: "Yes, Ruby's greate", question_id: ruby_greate.id)
+  ::Answer.create!(name: "Yes, Ruby's dynamic", question_id: ruby_dynamic.id)
+
+end
+
