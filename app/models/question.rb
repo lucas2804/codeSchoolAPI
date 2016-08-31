@@ -4,6 +4,6 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :answers, allow_destroy: true
 
   validates_associated :answers
-  validates :name, presence: true
+  validates :name, :answers, presence: true
 
 end
