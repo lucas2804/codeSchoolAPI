@@ -71,8 +71,8 @@ class Admin::TestsController < Admin::ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def admin_test_params
     params.require(:test).permit(:name, :description, :id,
-                                 questions_attributes: [:name, :description, :id,
-                                                        answers_attributes: [:id, :name, :is_correct_answer]]
+                                 questions_attributes: [:name, :description, :id, :_destroy,
+                                                        answers_attributes: [:id, :name, :is_correct_answer, :_destroy]]
     )
   end
 end
