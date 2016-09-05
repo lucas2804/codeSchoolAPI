@@ -3,8 +3,7 @@ class API::SessionsController < ApplicationController
     user_password = params[:password]
     user_email = params[:email]
     user = user_email.present? && User.find_by(email: user_email)
-
-    if user.valid_password? user_password
+    if user && user.valid_password?(user_password)
       sign_in user, store: false
       user.generate_authentication_token!
       user.save
@@ -16,7 +15,7 @@ class API::SessionsController < ApplicationController
 
 
   def destroy
-    user = User.find_by(auth_token: params[:id])
+    user = User.find_by(auth_token: params[:auth_token])
     user.generate_authentication_token!
     user.save
     head 204
