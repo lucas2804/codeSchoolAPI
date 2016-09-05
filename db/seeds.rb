@@ -18,23 +18,25 @@ end
 
 unless ::Test.exists?(name: "Ruby")
   ::Test.create!(name: "Ruby", description: "Foundation in Ruby")
-  ::Test.create!(name: "Javascript", description: "OOP in Javascript")
 end
 
-unless ::Question.exists?(name: "Ruby's greate?")
+unless ::Question.exists?(name: "OOP in Ruby")
   ruby = ::Test.where(name: "Ruby").first
-  js = ::Test.where(name: "Javascript").first
-  ::Question.create!(name: "Ruby's greate?", test_id: ruby.id)
-  ::Question.create!(name: "Ruby's dynamic?", test_id: ruby.id)
-  ::Question.create!(name: "Closure?", test_id: js.id)
-  ::Question.create!(name: "ES6?", test_id: js.id)
+  ::Question.create!(name: "OOP in Ruby", test_id: ruby.id)
+  ::Question.create!(name: "Authenticate Gem", test_id: ruby.id)
 end
 
-unless ::Answer.exists?(name: "Ruby's greate?")
-  ruby_greate = ::Question.where(name: "Ruby's greate?").first
-  ruby_dynamic = ::Question.where(name: "Ruby's dynamic?").first
-  ::Answer.create!(name: "Yes, Ruby's greate", question_id: ruby_greate.id)
-  ::Answer.create!(name: "Yes, Ruby's dynamic", question_id: ruby_dynamic.id)
+unless ::Answer.exists?(name: "Everything are objects")
+  ruby_oop = ::Question.where(name: "OOP in Ruby").first
+  ruby_auth = ::Question.where(name: "Authenticate Gem").first
+  ::Answer.create!(name: "Everything are objects", question_id: ruby_oop.id)
+  ::Answer.create!(name: "String, Number, Hash are Object", question_id: ruby_oop.id)
+  ::Answer.create!(name: "Just String", question_id: ruby_oop.id)
+
+  ::Answer.create!(name: "Devise", question_id: ruby_auth.id)
+  ::Answer.create!(name: "Devise Auth Token", question_id: ruby_auth.id)
+  ::Answer.create!(name: "Devise Auth Token and Devise", question_id: ruby_auth.id)
+  ::Answer.create!(name: "Active Model Serialization", question_id: ruby_auth.id)
 
 end
 
