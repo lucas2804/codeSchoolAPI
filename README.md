@@ -7,7 +7,10 @@ codeSchoolAPI is my boilerplate, I've structured code into admin_namespace and a
 
 # The things that I've covered:
 
-Admin space:
+##Admin space:
+Example user:
+    email: super_teacher@gmail.com
+    password: 1234qwer
 
 1. Authenticate just "Teacher" role can access CRUD of Admin space
 
@@ -17,7 +20,7 @@ Admin space:
 3. Manage Tests  http://localhost:3000/admin/tests
     - Be able to add more "Questions" and "Answers" for each "Test"
 
-API space:
+##API space:
 
 1. Sign in through curl -i --data "email=super_teacher@gmail.com&password=1234qwer" localhost:3000/api/users/sign_in to get "auth_token" (generate new auth_token)
 
