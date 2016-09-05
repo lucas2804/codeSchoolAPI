@@ -1,12 +1,8 @@
 
-form.edit_test h3, form.new_test h3{
+form.edit_test h3, form.new_test h3 {
   clear: both;
   padding: 20px;
   padding-left: 30px;
-}
-
-form input[type="submit"] {
-  margin-top: 50px;
 }
 
 .ff-answer {
@@ -23,8 +19,12 @@ div.a-answer {
 
 form.edit_test input[type="submit"] {
   background: #2980b9 !important;
+  margin-top: 50px;
 }
-
+form.new_test input[type="submit"] {
+  background: #2980b9 !important;
+  margin-top: 50px;
+}
 div.ff-question {
   input.question-name, .question-description {
     width: 50%;
@@ -70,8 +70,12 @@ div.ff-question {
 
 }
 
-.line-question{
+.line-question {
   width: 100%;
   margin-left: 15px;
   border: 3px solid #eee;
+}
+
+.right-side {
+  min-height: 500px;
 }

@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
-  get 'home/index'
 
   devise_for :users
-  root to: "home#index"
+
+  namespace :api, defaults: {format: :json} do
+    devise_for :users
+    namespace :v1 do
+      resources :tests, only: [:show, :index]
+      resources :users, only: [:show]
+      resources :sessions, :only => [:create, :destroy]
+      resources :test_results, only: [:create, :update]
+    end
+  end
+
 
   namespace :api do
     resources :crawlers
@@ -14,6 +23,9 @@ Rails.application.routes.draw do
     resources :tests
     resources :users
   end
+
+  root to: "home#index"
+
 end
 
 # Routes

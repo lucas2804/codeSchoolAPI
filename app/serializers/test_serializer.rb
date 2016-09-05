@@ -1,3 +1,4 @@
 class TestSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :description
+  has_many :questions
 end
